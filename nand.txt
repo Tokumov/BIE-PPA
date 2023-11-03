@@ -1,0 +1,1 @@
+λp.λq. (p FALSE TRUE) (p q p)
