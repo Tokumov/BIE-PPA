@@ -1,1 +1,1 @@
-λx.λy. (NOT x) (NOT x) ( (NOT y) (NOT y) (NOT (AND x y)) )
+f = λx.λy. (NOT x) (NOT x) ( (NOT y) (NOT y) (NOT (AND x y)) )
