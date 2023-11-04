@@ -1,1 +1,1 @@
-(x t y)((x f t)x)((x f t)y)((x y f)xy)
+λxy.x(λuv.u)(y(λuv.v)(λuv.u)(λuv.u)(xy(λuv.v)))
