@@ -1,1 +1,1 @@
-f xy=(x t y)((x f t)x)((x f t)y)((x y f)xy)
+(x t y)((x f t)x)((x f t)y)((x y f)xy)
