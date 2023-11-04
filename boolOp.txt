@@ -1,1 +1,1 @@
-λxy.x(λuv.u)(y(λuv.v)(λuv.u)(λuv.u)(xy(λuv.v)))
+λxy.xt(yftt(xyf))
