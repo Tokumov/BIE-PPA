@@ -1,1 +1,1 @@
-\xy. (\uv. u u v) ((\uv. u u v) ((\z. z (\pq. q) (\pq. p)) x) ((\z. z (\pq. q) (\pq. p)) y)) ((\uv. u v u) x y)
+f xy=(x t y)((x f t)x)((x f t)y)((x y f)xy)
