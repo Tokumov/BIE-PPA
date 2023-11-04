@@ -1,1 +1,1 @@
-λx.λy. (x F T) T (y F T)
+(λ x y t f . y f t)
