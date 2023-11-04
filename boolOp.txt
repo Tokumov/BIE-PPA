@@ -1,1 +1,1 @@
-λxy.xt(yftt(xyf))
+λx.λy.((x y) (λp.((p (λa.λb.b)) (λa.λb.a))) (λp.((p (λa.λb.b)) (λa.λb.a))))
