@@ -1,1 +1,1 @@
-OP ≡ λp.λq.p (q f t) t
+λx.λy. (x F T) T (y F T)
