@@ -1,1 +1,1 @@
-λp.λq.((p (q f t)) ((p f) (q t)))
+OP ≡ λp.λq.p (q f t) t
