@@ -1,1 +1,1 @@
-f=λxy.(λuv.u u v) ((λuv.u u v) ((λz.z (λpq.q) (λpq.p)) x) ((λz.z (λpq.q) (λpq.p)) y)) ((λuv.u v u) x y)
+λxy. (λuv. u u v) ((λuv. u u v) ((λz. z (λpq. q) (λpq. p)) x) ((λz. z (λpq. q) (λpq. p)) y)) ((λuv. u v u) x y)
