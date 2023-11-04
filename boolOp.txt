@@ -1,1 +1,1 @@
-(λx. (λy. (λt. (λf. ((xy f) t)))))
+(λxy. (λxtf. x f t) T (λytf. y f t))
