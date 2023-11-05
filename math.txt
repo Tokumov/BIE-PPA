@@ -1,1 +1,1 @@
-(λ s . y (λ z . s ( s ( x s ( x s z ) ) )))
+(λ x y s . y (λ z . s ( s ( x s ( x s z ) ) )))
