@@ -1,1 +1,1 @@
-(λ n . = (n (λ x. (= (+ x 1) 2) T (+ x 1)) 1) F T)  
+(λ x . ZERO x T (NOT (x (λ y . NOT (NOT y)) F) F T))
