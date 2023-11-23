@@ -1,1 +1,1 @@
-(λ x . (NOT (x (λ y . NOT (NOT y)) F) F T)) 
+(λ x . NOT (ZERO x) (NOT (- x 1 (λ y . NOT y) F) F T) T)
