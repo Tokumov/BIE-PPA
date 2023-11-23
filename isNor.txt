@@ -1,0 +1,1 @@
+(λ FOO . AND (FOO F F) (NOT (OR (FOO T F) (OR (FOO F T) (FOO T T)))))
