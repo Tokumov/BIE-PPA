@@ -1,25 +1,14 @@
-maxuniq(Seq, Result) :-
-    findall(SubSeq, divide(Seq, SubSeq), AllSubSeqs),
-    searchMaxDistinctSubSeqs(AllSubSeqs, 0, Result).
+maxuniq(Lst, Max) :-
+    maxuniq_helper(Lst, [], 0, Max).
 
-searchMaxDistinctSubSeqs([], MaxLen, MaxLen).
-searchMaxDistinctSubSeqs([First|Rest], CurrMaxLen, MaxLen) :-
-    length(First, Len),
-    (checkDistinct(First) -> 
-        (Len > CurrMaxLen -> UpdatedMaxLen = Len; UpdatedMaxLen = CurrMaxLen)
-    ; UpdatedMaxLen = CurrMaxLen),
-    searchMaxDistinctSubSeqs(Rest, UpdatedMaxLen, MaxLen).
+maxuniq_helper([], _, Max, Max).
+maxuniq_helper(RemainingList, CurrentPartition, CurrentMax, Max) :-
+    append(Sublist, Rest, RemainingList),
+    Sublist \= [],
+    \+ member(Sublist, CurrentPartition),
+    length([Sublist|CurrentPartition], NewLength),
+    NewMax is max(NewLength, CurrentMax),
+    maxuniq_helper(Rest, [Sublist|CurrentPartition], NewMax, Max).
 
-checkDistinct(Seq) :-
-    sort(Seq, SortedSeq),
-    length(Seq, OrigLen),
-    length(SortedSeq, SortedLen),
-    OrigLen == SortedLen.
-
-divide([], []).
-divide([Head|Tail], [[Head|Tail2]|Other]) :-
-    append(Tail2, Remain, Tail),
-    divide(Remain, Other).
-
-divide([Head|Tail], [[Head]|Other]) :-
-    divide(Tail, Other).
+max(X, Y, X) :- X >= Y, !.
+max(_, Y, Y).
