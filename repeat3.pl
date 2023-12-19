@@ -1,17 +1,14 @@
 repeat3(Lst, X) :-
-    sublist(X, Lst),
+    append([_, X, Rest], Lst),
     X \= [],
-    count_occurrences(Lst, X, 0, 3).
+    append([_, X, Rest2], Rest),
+    append([_, X, _], Rest2).
 
-count_occurrences([], _, Count, Count).
-count_occurrences(Lst, X, Acc, Count) :-
-    append(X, Rest, Lst),
-    !,
-    NewAcc is Acc + 1,
-    count_occurrences(Rest, X, NewAcc, Count).
-count_occurrences([_|T], X, Acc, Count) :-
-    count_occurrences(T, X, Acc, Count).
+non_empty_unique(Prefix, X, Middle, Suffix) :-
+    X \= [],
+    \+ sublist(X, Prefix),
+    \+ sublist(X, Middle),
+    \+ sublist(X, Suffix).
 
-sublist(SubLst, Lst) :-
-    append(_, Rest, Lst),
-    append(SubLst, _, Rest).
+sublist(Sub, List) :-
+    append([_, Sub, _], List).
