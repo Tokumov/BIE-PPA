@@ -1,21 +1,22 @@
-maxuniq(Seq, Result) :-
-    findall(SubSeq, divide(Seq, SubSeq), AllSubSeqs),
-    searchMaxDistinctSubSeqs(AllSubSeqs, 0, Result).
-searchMaxDistinctSubSeqs([], MaxLen, MaxLen).
-searchMaxDistinctSubSeqs([First|Rest], CurrMaxLen, MaxLen) :-
-    length(First, Len),
-    (checkDistinct(First) -> 
-        (Len > CurrMaxLen -> UpdatedMaxLen = Len; UpdatedMaxLen = CurrMaxLen)
-    ; UpdatedMaxLen = CurrMaxLen),
-    searchMaxDistinctSubSeqs(Rest, UpdatedMaxLen, MaxLen).
-checkDistinct(Seq) :-
-    sort(Seq, SortedSeq),
-    length(Seq, OrigLen),
-    length(SortedSeq, SortedLen),
-    OrigLen == SortedLen.
-divide([], []).
-divide([Head|Tail], [[Head|Tail2]|Other]) :-
-    append(Tail2, Remain, Tail),
-    divide(Remain, Other).
-divide([Head|Tail], [[Head]|Other]) :-
-    divide(Tail, Other).
+maxuniq(Lst, Max) :-
+    findall(Part, partition(Lst, Part), Partitions),
+    max_unique_sublists(Partitions, 0, Max).
+
+max_unique_sublists([], Max, Max).
+max_unique_sublists([P|Ps], CurrentMax, Max) :-
+    (unique_sublists(P), length(P, L), L > CurrentMax ->
+        max_unique_sublists(Ps, L, Max)
+    ;
+        max_unique_sublists(Ps, CurrentMax, Max)
+    ).
+
+unique_sublists(Partition) :-
+    sort(Partition, Sorted),
+    length(Partition, Len),
+    length(Sorted, Len).
+
+partition([], []).
+partition([H|T], [[H|Sublist]|Rest]) :-
+    append(Sublist, Remaining, T),
+    partition(Remaining, Rest).
+partition([H|T], [[H]|Rest]) :-
